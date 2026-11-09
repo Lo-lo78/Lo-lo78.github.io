@@ -20,8 +20,12 @@ Website: https://lo-lo78.github.io/
 
 ## Automatic release updates
 
-The site reads `https://api.github.com/repos/Lo-lo78/REPOSITORY/releases/latest` for each product whenever a visitor opens the page. Version and publication date are shown; the download button links to the official release page. No manual edits are needed when a new non-prerelease GitHub release is published. If GitHub API requests fail or are rate-limited, the button falls back to `/releases/latest`, which GitHub maintains automatically.
+The site reads `https://api.github.com/repos/Lo-lo78/REPOSITORY/releases/latest` for each product whenever a visitor opens the page. Version and publication date are shown; the download button selects the Windows VST3 ZIP for instruments, or the Windows x64 Setup ZIP for LReaParams, from that release’s assets and downloads it directly. If the expected asset is missing, the button opens the release page instead. No manual edits are needed when a new non-prerelease GitHub release is published. If GitHub API requests fail or are rate-limited, the button falls back to `/releases/latest`, which GitHub maintains automatically.
 
 ## Accessibility
 
 Semantic HTML, explicit headings and landmarks, keyboard navigation, visible focus, skip link, language selection, live region for release statuses, reduced-motion support. English and Italian translations built in.
+
+## Direct binary downloads
+
+Asset detection uses the `assets` array in the GitHub Releases API. Four VST3 projects prefer `*.vst3.zip`; LReaParams prefers `*Windows*x64*Setup*.zip`. Do not rename files unpredictably, or the site may revert to the release page for safety. The browser may display a download confirmation depending on its settings.
